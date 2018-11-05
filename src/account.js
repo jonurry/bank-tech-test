@@ -13,5 +13,7 @@ export default class Account {
   }
   debit(amount) {
     this.balance -= amount
+    let transaction = new this.transactionClass(-amount)
+    this.transactions.push(transaction)
   }
 }
