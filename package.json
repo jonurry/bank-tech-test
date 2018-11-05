@@ -1,0 +1,25 @@
+{
+  "name": "bank-tech-test",
+  "version": "1.0.0",
+  "description": "Makers week 10 tech test",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|mdx|graphql|vue)\"",
+    "lint": "eslint src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bank",
+    "tech",
+    "test"
+  ],
+  "author": "Jon Urry",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "jest": "^23.6.0",
+    "prettier": "^1.14.3"
+  }
+}
