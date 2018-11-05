@@ -8,8 +8,9 @@
     "flow": "flow",
     "format": "npm run prettier -- --write",
     "prettier": "prettier \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)\"",
-    "validate": "npm run lint && npm run prettier -- --list-different && npm run flow",
-    "precommit": "lint-staged && npm run validate"
+    "validate": "npm run lint && npm run test && npm run prettier -- --list-different && npm run flow",
+    "precommit": "lint-staged && npm run validate",
+    "test": "jest"
   },
   "keywords": [
     "bank",

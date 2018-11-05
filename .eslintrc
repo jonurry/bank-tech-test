@@ -9,6 +9,7 @@
     "semi": ["error", "never"]
   },
   "env": {
-    "browser": true
+    "browser": true,
+    "jest": true
   }
 }
