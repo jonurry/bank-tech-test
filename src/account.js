@@ -1,7 +1,10 @@
+import Transaction from './transaction'
+
 export default class Account {
-  constructor(balance = 0, transactions = []) {
+  constructor(balance = 0, transactionClass = Transaction) {
     this.balance = balance
-    this.transactions = transactions
+    this.transactions = []
+    this.transactionClass = transactionClass
   }
   credit(amount) {
     this.balance += amount

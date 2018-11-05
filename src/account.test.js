@@ -1,14 +1,21 @@
 import Account from './account'
+import Transaction from './transaction'
+
 describe('account', () => {
   describe('constructor', () => {
     describe('use defaults', () => {
+      let account
+      beforeEach(() => {
+        account = new Account()
+      })
       test('account has a balance', () => {
-        let account = new Account()
         expect(account.balance).toBe(0)
       })
       test('account has no transactions', () => {
-        let account = new Account()
         expect(account.transactions).toEqual([])
+      })
+      test('account has default transaction maker', () => {
+        expect(account.transactionClass).toEqual(Transaction)
       })
     })
     describe('override defaults', () => {
@@ -16,10 +23,15 @@ describe('account', () => {
         let account = new Account(100)
         expect(account.balance).toBe(100)
       })
-      test('account has set transactions', () => {
-        let transation = {date: Date.now(), amount: 20}
-        let account = new Account(0, [transation])
-        expect(account.transactions).toEqual([transation])
+      // test('account has set transactions', () => {
+      //   let transation = {date: Date.now(), amount: 20}
+      //   let account = new Account(0, [transation])
+      //   expect(account.transactions).toEqual([transation])
+      // })
+      test('account has a specific transaction maker', () => {
+        let mock = jest.fn()
+        let account = new Account(100, mock)
+        expect(account.transactionClass).toBe(mock)
       })
     })
   })
