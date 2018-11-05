@@ -6,4 +6,7 @@ export default class Account {
   credit(amount) {
     this.balance += amount
   }
+  debit(amount) {
+    this.balance -= amount
+  }
 }

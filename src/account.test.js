@@ -38,4 +38,11 @@ describe('account', () => {
     //   })
     // })
   })
+  describe('debit', () => {
+    test('user can debit money from an account', () => {
+      let account = new Account(100)
+      account.debit(50)
+      expect(account.balance).toBe(50)
+    })
+  })
 })
