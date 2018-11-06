@@ -4,6 +4,30 @@
 
 This is my solution to the Makers Bank Tech Test during week 10 of the course.
 
+## Approach
+
+I stuck to the red, green, refactor test cycle pretty well. I wanted to test
+drive everything and work in small increments. Hopefully, that is reflected in
+my commits, of which there are currently 25.
+
+It took me about 3 hours to setup my environment before I could start testing.
+This wasn't ideal, but I was trying to get a comprehensive tool set configured.
+
+I thought about how the code could be structured before writing my first test. I
+knew that I would probebly need an Account, Transactions and probably something
+for printing statements.
+
+I let the tests dictate what classes and methods I actually needed and tooks
+small iterations of between 15 to 30 mins between commits.
+
+## User Interface
+
+The API is designed to be used from a browser console (in the first instance).
+As such, I created an `index.html` file that contains instructions on how to do
+that. Here's a screenshot:
+
+![Screenshot of Bank Tech Test User Interface](./screenshot.jpg)
+
 ## Setup
 
 Clone the repository:
