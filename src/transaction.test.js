@@ -8,7 +8,7 @@ describe('transaction', () => {
         return now
       })
       let trans = new Transaction(10)
-      expect(trans).toEqual({amount: 10, date: now})
+      expect(trans).toEqual({amount: 10, date: new Date(Date.now())})
     })
     test('with a date', () => {
       const date = Date('10/01/2012')

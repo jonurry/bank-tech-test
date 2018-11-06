@@ -81,7 +81,7 @@ describe('account', () => {
         expect(account.transactions).toHaveLength(1)
       })
       test(`should use today's date and time for transaction`, () => {
-        expect(Transaction).toHaveBeenCalledWith(50, now)
+        expect(Transaction).toHaveBeenCalledWith(50, new Date(Date.now()))
       })
     })
   })
@@ -131,7 +131,7 @@ describe('account', () => {
         expect(account.transactions).toHaveLength(2)
       })
       test(`should use today's date and time for transaction`, () => {
-        expect(Transaction).toHaveBeenCalledWith(-25, now)
+        expect(Transaction).toHaveBeenCalledWith(-25, new Date(Date.now()))
       })
     })
   })
