@@ -7,15 +7,15 @@ describe('statement', () => {
       let transactions = [
         {
           amount: 1000,
-          date: Date('2012/01/10'),
+          date: new Date('2012/01/10'),
         },
         {
           amount: 2000,
-          date: Date('2012/01/13'),
+          date: new Date('2012/01/13'),
         },
         {
           amount: -500,
-          date: Date('2012/01/14'),
+          date: new Date('2012/01/14'),
         },
       ]
       expect(statement.print(transactions)).toEqual(

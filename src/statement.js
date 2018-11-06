@@ -1,9 +1,28 @@
 export default class Statement {
   constructor() {}
   print(transactions) {
-    return `date || credit || debit || balance
-14/01/2012 || || 500.00 || 2500.00
-13/01/2012 || 2000.00 || || 3000.00
-10/01/2012 || 1000.00 || || 1000.00`
+    let statement = []
+    let balance = 0
+    let sortedTransactions = transactions.sort((a, b) => {
+      if (a.date < b.date) return -1
+      if (a.date > b.date) return 1
+      return 0
+    })
+    sortedTransactions.forEach(transaction => {
+      let credit = ' '
+      let debit = ' '
+      date = transaction.date
+      let date = `${date.getDate()}/${String(date.getMonth() + 1).padStart(
+        2,
+        '0',
+      )}/${date.getFullYear()}`
+      transaction.amount >= 0
+        ? (credit = ` ${transaction.amount.toFixed(2)} `)
+        : (debit = ` ${(-transaction.amount).toFixed(2)} `)
+      balance += transaction.amount
+      statement.push(`\n${date} ||${credit}||${debit}|| ${balance.toFixed(2)}`)
+    })
+    statement.push('date || credit || debit || balance')
+    return statement.reverse().join('')
   }
 }
