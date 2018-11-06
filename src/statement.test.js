@@ -10,12 +10,12 @@ describe('statement', () => {
           date: new Date('2012/01/10'),
         },
         {
-          amount: 2000,
-          date: new Date('2012/01/13'),
-        },
-        {
           amount: -500,
           date: new Date('2012/01/14'),
+        },
+        {
+          amount: 2000,
+          date: new Date('2012/01/13'),
         },
       ]
       expect(statement.print(transactions)).toEqual(
