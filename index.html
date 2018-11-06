@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <!-- <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json"> -->
+  <title>Bank Tech Test</title>
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <h1>Open the console (alt-cmd-j) to play with this:</h1>
+  <strong>Create an account</strong>
+  <pre>
+    <code>let account = new Account()</code>
+  </pre>
+  <strong>Credit the account with £1,000 on a given date:</strong>
+  <pre>
+    <code>account.credit(1000, new Date('2012-01-10'))</code>
+  </pre>
+  <strong>Credit the account with £2,000 now:</strong>
+  <pre>
+    <code>account.credit(2000)</code>
+  </pre>
+  <strong>Debit £500 from the account on a given date:</strong>
+  <pre>
+    <code>account.debit(500, new Date('2012-01-14'))</code>
+  </pre>
+  <strong>Debit £100 from the account now:</strong>
+  <pre>
+    <code>account.debit(100)</code>
+  </pre>
+  <strong>Show the account balance:</strong>
+  <pre>
+    <code>account.balance</code>
+  </pre>
+  <strong>Print the account statement showing all transactions:</strong>
+  <pre>
+    <code>account.printStatement()</code>
+  </pre>
+</body>
+<script type="module" src="./src/app.js"></script>
+
+</html>

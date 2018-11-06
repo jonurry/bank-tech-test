@@ -1,5 +1,5 @@
-import Transaction from './transaction'
-import Statement from './statement'
+import Transaction from './transaction.js'
+import Statement from './statement.js'
 
 export default class Account {
   constructor(transactionClass = Transaction, statementClass = Statement) {
