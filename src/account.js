@@ -19,6 +19,6 @@ export default class Account {
     this.transactions.push(transaction)
   }
   printStatement() {
-    this.statement.print(this.transactions)
+    return this.statement.print(this.transactions)
   }
 }
