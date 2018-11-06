@@ -87,21 +87,52 @@ describe('account', () => {
   })
   describe('debit', () => {
     let account
-    beforeEach(() => {
-      // Clear all instances and calls to constructor and all methods:
-      Transaction.mockClear()
-      account = new Account(Transaction)
-      account.credit(100)
-      account.debit(25)
+    describe('with transaction date', () => {
+      const date = new Date('2018-10-07')
+      beforeEach(() => {
+        // Clear all instances and calls to constructor and all methods:
+        Transaction.mockClear()
+        account = new Account(Transaction)
+        account.credit(100, date)
+        account.debit(25, date)
+      })
+      test('should debit money from an account', () => {
+        expect(account.balance).toBe(75)
+      })
+      test('should create a transaction', () => {
+        expect(Transaction).toHaveBeenCalledTimes(2)
+      })
+      test('should store one item in transactions[]', () => {
+        expect(account.transactions).toHaveLength(2)
+      })
+      test(`should use today's date and time for transaction`, () => {
+        expect(Transaction).toHaveBeenCalledWith(-25, date)
+      })
     })
-    test('should debit money from an account', () => {
-      expect(account.balance).toBe(75)
-    })
-    test('should create a transaction', () => {
-      expect(Transaction).toHaveBeenCalledTimes(2)
-    })
-    test('should store one item in transactions[]', () => {
-      expect(account.transactions).toHaveLength(2)
+    describe('without transaction date', () => {
+      const now = Date.now()
+      beforeEach(() => {
+        // Clear all instances and calls to constructor and all methods:
+        Transaction.mockClear()
+        jest.spyOn(Date, 'now').mockImplementation(() => {
+          return now
+        })
+        account = new Account(Transaction)
+        account.credit(100)
+        account.debit(25)
+      })
+      test('should debit money from an account', () => {
+        expect(account.balance).toBe(75)
+      })
+      test('should create a transaction', () => {
+        expect(Transaction).toHaveBeenCalledTimes(2)
+      })
+      test('should store one item in transactions[]', () => {
+        expect(account.transactions).toHaveLength(2)
+      })
+      test(`should use today's date and time for transaction`, () => {
+        expect(Transaction).toHaveBeenCalledWith(-25, now)
+      })
     })
   })
   describe('printStatement', () => {

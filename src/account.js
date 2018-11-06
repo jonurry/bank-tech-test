@@ -13,9 +13,9 @@ export default class Account {
     let transaction = new this.transactionClass(amount, date)
     this.transactions.push(transaction)
   }
-  debit(amount) {
+  debit(amount, date = Date.now()) {
     this.balance -= amount
-    let transaction = new this.transactionClass(-amount)
+    let transaction = new this.transactionClass(-amount, date)
     this.transactions.push(transaction)
   }
   printStatement() {
