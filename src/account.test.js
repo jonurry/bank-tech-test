@@ -1,5 +1,6 @@
 import Account from './account'
 import Transaction from './transaction'
+import Statement from './statement'
 jest.mock('./transaction')
 
 describe('account', () => {
@@ -18,12 +19,20 @@ describe('account', () => {
       test('should have a Transaction class', () => {
         expect(account.transactionClass).toEqual(Transaction)
       })
+      test('should have a Statement class', () => {
+        expect(account.statementClass).toEqual(Statement)
+      })
     })
     describe('override defaults', () => {
       test('should have a specified Transaction class', () => {
         let mock = jest.fn()
         let account = new Account(mock)
         expect(account.transactionClass).toBe(mock)
+      })
+      test('should have a specified Statement class', () => {
+        let mock = jest.fn()
+        let account = new Account({}, mock)
+        expect(account.statementClass).toBe(mock)
       })
     })
   })
