@@ -2,6 +2,7 @@ import Account from './account'
 import Transaction from './transaction'
 import Statement from './statement'
 jest.mock('./transaction')
+jest.mock('./statement')
 
 describe('account', () => {
   describe('constructor', () => {
@@ -20,7 +21,7 @@ describe('account', () => {
         expect(account.transactionClass).toEqual(Transaction)
       })
       test('should have a Statement class', () => {
-        expect(account.statementClass).toEqual(Statement)
+        expect(account.statement).toBeInstanceOf(Statement)
       })
     })
     describe('override defaults', () => {
@@ -32,7 +33,7 @@ describe('account', () => {
       test('should have a specified Statement class', () => {
         let mock = jest.fn()
         let account = new Account({}, mock)
-        expect(account.statementClass).toBe(mock)
+        expect(account.statement).toBeInstanceOf(mock)
       })
     })
   })
@@ -71,6 +72,17 @@ describe('account', () => {
     })
     test('should store one item in transactions[]', () => {
       expect(account.transactions).toHaveLength(2)
+    })
+  })
+  describe('printStatement', () => {
+    test('should allow a statement to be printed', () => {
+      Transaction.mockClear()
+      Statement.mockClear()
+      let account = new Account(Transaction, Statement)
+      account.printStatement()
+      expect(Statement.mock.instances[0].print).toHaveBeenCalledWith(
+        account.transactions,
+      )
     })
   })
 })

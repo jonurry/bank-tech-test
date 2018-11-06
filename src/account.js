@@ -6,7 +6,7 @@ export default class Account {
     this.balance = 0
     this.transactions = []
     this.transactionClass = transactionClass
-    this.statementClass = statementClass
+    this.statement = new statementClass()
   }
   credit(amount) {
     this.balance += amount
@@ -17,5 +17,8 @@ export default class Account {
     this.balance -= amount
     let transaction = new this.transactionClass(-amount)
     this.transactions.push(transaction)
+  }
+  printStatement() {
+    this.statement.print(this.transactions)
   }
 }
