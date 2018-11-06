@@ -8,9 +8,9 @@ export default class Account {
     this.transactionClass = transactionClass
     this.statement = new statementClass()
   }
-  credit(amount) {
+  credit(amount, date = Date.now()) {
     this.balance += amount
-    let transaction = new this.transactionClass(amount)
+    let transaction = new this.transactionClass(amount, date)
     this.transactions.push(transaction)
   }
   debit(amount) {
